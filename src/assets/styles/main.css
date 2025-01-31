@@ -7,4 +7,17 @@
     --color-secondary: oklch(0.65 0.13 278);
     --color-background: oklch(0.91 0.03 17);
     --color-background-hover: oklch(0.86 0.03 17);
+    
+    --animate-slideRight: "fadeRightIn 0.3s ease-in-out"
+}
+
+@keyframes fadeRightIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

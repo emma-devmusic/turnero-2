@@ -1,10 +1,11 @@
 interface ButtonProps {
     label: string;
-    action: (e:any) => void;
+    action?: (e: any) => void;
     type?: 'button' | 'submit';
     className?: string; // Optional prop to add additional styles to the button. Example: className="my-class"  // Optional prop to add additional styles to the button. Example: className="my-class"  // Optional prop to add additional styles to the button. Example: className="my-class"  // Optional prop to add additional styles to the button. Example: className="my-class"  // Optional prop to add additional styles to the button. Example: className="
-    variant: 'primary' | 'secondary' | 'danger' | 'primary-outline' | 'danger-outline' | 'secondary-outline';
+    variant?: 'primary' | 'secondary' | 'danger' | 'primary-outline' | 'danger-outline' | 'secondary-outline';
     disabled?: boolean; // Optional prop to disable the button. Example: disabled={true}  // Optional prop to disable the button. Example: disabled={true}  // Optional prop to disable the button. Example: disabled={true}  // Optional prop to disable the button. Example: disabled={true}  // Optional prop to disable the button. Example: disabled={true}  // Optional prop to disable the button. Example: disabled={true}  // Optional prop to disable
+    icon?: React.ReactNode; // Optional prop to add an icon to the button. Example: icon={<Icon />}  // Optional prop to add an icon to the button. Example: icon={<Icon />}  // Optional prop to add an icon to the button. Example: icon={<Icon />}  // Optional prop to add an icon to the button. Example: icon={<Icon />}  // Optional prop to add an icon to the button. Example: icon={<Icon />}  // Optional
 }
 
 type ButtonVariants = {
@@ -16,9 +17,9 @@ type ButtonVariants = {
     ['danger-outline']: string;
 }
 
-export const Button = ({label, action, className, type, variant, disabled}: ButtonProps) => {
+export const Button = ({ label, action, className, type, variant = 'primary', disabled, icon }: ButtonProps) => {
 
-    const buttonVariants:ButtonVariants = {
+    const buttonVariants: ButtonVariants = {
         primary: 'border-primary bg-primary text-white hover:bg-primary-hover active:text-primary',
         secondary: 'bg-white text-primary',
         danger: 'bg-red-500 text-white',
@@ -30,11 +31,14 @@ export const Button = ({label, action, className, type, variant, disabled}: Butt
     return (
         <button
             type={type || 'button'}
-            className={`inline-block shrink-0 rounded-md border px-12 py-3 text-sm font-medium transition-all hover:cursor-pointer ${buttonVariants[variant]} focus:outline-none focus:ring  ${className}`}
+            className={`inline-block shrink-0 rounded border px-4.5 py-2.5 text-sm font-medium transition-all hover:cursor-pointer ${buttonVariants[variant]} focus:outline-none focus:ring  ${className}`}
             onClick={action}
             disabled={disabled}
         >
-            {label}
+            <div className="flex items-center gap-1">
+                {icon && icon}
+                {label}
+            </div>
         </button>
     );
 };
