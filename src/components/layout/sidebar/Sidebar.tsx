@@ -11,9 +11,9 @@ export const Sidebar = () => {
     const toggleExpanded = () => setExpanded(!expanded);
     
     return (
-        <div className={`absolute h-[calc(100vh-82px)] md:relative sm:translate-x-[0] flex md:h-full flex-col justify-between bg-white shadow-md transition-all ${expanded ? 'w-64 translate-x-[0]' : '-translate-x-[100%] sm:w-16'}`}>
+        <div className={`absolute h-[calc(100vh-83px)] md:relative sm:translate-x-[0] flex md:h-full flex-col justify-between bg-white shadow-md transition-all ${expanded ? 'w-64 translate-x-[0] min-w-64 ' : '-translate-x-[100%] sm:w-16'}`}>
             <div className={`py-6 ${expanded ? 'px-2' : ''}`}>
-                <ul className="space-y-1">
+                <ul className="flex flex-col gap-1.5">
                     {
                         sidebarLinks.map((link) => (
                             <li key={link.href}>
@@ -22,7 +22,7 @@ export const Sidebar = () => {
                                     childs={link.childs} 
                                     icon={link.icon} 
                                     variant="sidebar"
-                                    className={ `transition-all [&_div]:justify-start ${!expanded ? '[&_div]:!justify-center mx-1' : '[&_div]:animate-slideRight'}`}
+                                    className={ `transition-all h-9 [&_div]:justify-start ${!expanded ? '[&_div]:!justify-center mx-1' : '[&_div]:animate-slideRight'}`}
                                 >
                                     {!expanded ? '' : link.label}
                                 </LinkItem>
@@ -48,7 +48,7 @@ export const Sidebar = () => {
                         />
                     }
                     <div className="">
-                        <LogOut size={20} className={expanded ? 'm-7' : 'm-5.5'} />
+                        <LogOut size={20} className={expanded ? 'mr-6' : 'm-5.5'} />
                     </div>
                 </div>
             </div>

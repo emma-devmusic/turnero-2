@@ -13,7 +13,7 @@ export const Avatar = ({ img, title, subTitle, action, className, titleClass, su
 
     return (
         <div
-            className={`flex items-center gap-2 p-4 ${className}`}
+            className={`flex items-center gap-2 p-2 ${className}`}
             onClick={action}
         >
             {
